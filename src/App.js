@@ -1,10 +1,11 @@
 import "./App.css";
 import React, { Component } from "react";
+import PostList from "./components/postList";
 
 function App() {
   return (
     <div className="App">
-      <h1>hello its tanishk </h1>
+      <PostList />
     </div>
   );
 }
