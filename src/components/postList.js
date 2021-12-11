@@ -7,6 +7,7 @@ class PostList extends Component {
 
     this.state = {
       posts: [],
+      errorMsg: "",
     };
   }
 
@@ -19,17 +20,21 @@ class PostList extends Component {
         this.setState({ posts: response.data });
       })
 
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        this.setState({ errorMsg: "error !!!!!" });
+      });
   }
 
   render() {
-    const { posts } = this.state;
+    const { posts, errorMsg } = this.state;
     return (
       <div>
         List of posts in API
         {posts.length
           ? posts.map((item) => <div key={item.id}> {item.title} </div>)
           : null}
+        {errorMsg ? <div> {errorMsg} </div> : null}
       </div>
     );
   }
